@@ -1,10 +1,11 @@
 <?php
 require_once __DIR__ . '/vendor/autoload.php';
 
-if (isset($_POST['user']) && isset($_POST['email']) && ($_POST['password'])) {
+if (isset($_POST['submit'])) {
   $user = $_POST['user'];
   $email = $_POST['email'];
   $password = $_POST['password'];
+  $numTask = $_POST['tasks'];
 }
 
 $authenticator = new \ActiveCollab\SDK\Authenticator\Cloud('ACME Inc', 'My Awesome Application', $email, $password);
@@ -42,12 +43,14 @@ function date_compare($a, $b) {
 } 
 usort($tasks_arr, 'date_compare');
 
-//list sorted tasks
-echo '<h1>List of tasks for '.$user.'</h1>';
+echo '<h1>List ' .$numTask. ' tasks for '.$user.'</h1>';
+$counter = 0;
 foreach ($tasks_arr as $task) {
+  if ($counter >= $numTask) break;
   if ($task['created_by_email'] == $email) {
     echo '<li>'.$task['name'] .'</li>';
   }  
+  $counter++;
 }
 
 ?>

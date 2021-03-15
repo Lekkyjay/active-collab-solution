@@ -8,9 +8,16 @@
 </head>
 <body>
   <form action="api.php" method="post">
-    <p>User Name: <input type="text" name="user" Value=""></p>
-    <p>Email: <input type="text" name="email" Value=""></p>
-    <p>Password: <input type="text" name="password" Value=""></p>
+    <p>User Name: <input type="text" name="user" Value="" required></p>
+    <p>Email: <input type="text" name="email" Value="" required></p>
+    <p>Password: <input type="text" name="password" Value="" required></p>
+    <p>Get Tasks: 
+      <select name="tasks" required>
+        <option value="5">5</option>
+        <option value="10">10</option>
+        <option value="20">20</option>
+      </select>
+    </p>
     <input type="submit" name="submit" value="Submit">
   </form>
 </body>
